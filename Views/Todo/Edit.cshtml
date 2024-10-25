@@ -1,0 +1,52 @@
+@model TodoAppMvc.Models.Todo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container my-4">
+    <h1 class="text-center text-primary">Edit Todo</h1>
+
+    <h4 class="text-secondary">Todo Details</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form asp-action="Edit" class="shadow p-4 bg-light rounded">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group mb-3">
+                    <label asp-for="Task" class="control-label"></label>
+                    <input asp-for="Task" class="form-control" placeholder="Enter task" />
+                    <span asp-validation-for="Task" class="text-danger"></span>
+                </div>
+
+                <div class="form-group form-check mb-3">
+                    <input class="form-check-input" asp-for="IsComplete" />
+                    <label class="form-check-label" asp-for="IsComplete">
+                        @Html.DisplayNameFor(model => model.IsComplete)
+                    </label>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="DueDate" class="control-label"></label>
+                    <input asp-for="DueDate" class="form-control" placeholder="YYYY-MM-DD" />
+                    <span asp-validation-for="DueDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-success btn-lg w-100" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+        <a asp-action="Index" class="btn btn-info text-white">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,41 @@
+@model TodoAppMvc.Models.Todo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container my-4">
+    <h1 class="text-center text-primary">Todo Details</h1>
+
+    <div class="card shadow bg-light rounded">
+        <div class="card-body">
+            <h4 class="text-secondary">Todo Information</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Task)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Task)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IsComplete)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.IsComplete)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DueDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DueDate)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning me-2">Edit</a>
+        <a asp-action="Index" class="btn btn-info text-white">Back to List</a>
+    </div>
+</div>
